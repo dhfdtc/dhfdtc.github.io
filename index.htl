@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海托洛市新闻网 - HTL NEWS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", SimSun, sans-serif;
+        }
+        body {
+            background: #fff;
+            color: #333;
+            font-size: 14px;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        a:hover {
+            color: #0066cc;
+        }
+        .wrap {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 头部 */
+        .top-header {
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .top-header h1 {
+            font-size: 32px;
+            color: #111;
+            letter-spacing: 2px;
+        }
+        .top-header .desc {
+            color: #666;
+            margin-top: 5px;
+            font-size: 13px;
+        }
+
+        /* 导航栏 标准新闻站样式 */
+        .main-nav {
+            background: #0066cc;
+        }
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+        }
+        .main-nav li a {
+            display: block;
+            color: #fff;
+            font-size: 15px;
+            padding: 12px 25px;
+        }
+        .main-nav li a.active {
+            background: #0052a3;
+        }
+        .main-nav li a:hover {
+            background: #0052a3;
+            color: #fff;
+        }
+
+        /* 主体布局 主内容+侧边栏 */
+        .container {
+            display: flex;
+            gap: 25px;
+            margin: 30px auto;
+        }
+        .main {
+            width: 860px;
+        }
+        .sidebar {
+            width: 315px;
+        }
+
+        /* 页面切换 */
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+
+        /* 头条要闻 */
+        .head-news {
+            border: 1px solid #e5e5e5;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .head-news h2 {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #c00;
+            margin-bottom: 10px;
+        }
+        .head-news .info {
+            color: #999;
+            font-size: 12px;
+        }
+
+        /* 新闻列表模块 */
+        .news-module {
+            border: 1px solid #e5e5e5;
+            margin-bottom: 20px;
+        }
+        .module-title {
+            height: 35px;
+            line-height: 35px;
+            background: #f5f5f5;
+            padding: 0 15px;
+            font-size: 16px;
+            font-weight: bold;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .news-list {
+            padding: 10px 15px;
+        }
+        .news-list li {
+            list-style: none;
+            line-height: 2.2;
+            border-bottom: 1px dotted #eee;
+        }
+        .news-list li:last-child {
+            border: none;
+        }
+        .news-list .time {
+            color: #999;
+            font-size: 12px;
+            float: right;
+        }
+
+        /* 侧边栏模块 */
+        .side-module {
+            border: 1px solid #e5e5e5;
+            margin-bottom: 20px;
+        }
+        .side-list {
+            padding: 10px 15px;
+        }
+        .side-list li {
+            list-style: none;
+            line-height: 2.2;
+            border-bottom: 1px dotted #eee;
+        }
+
+        /* 内容页面样式 */
+        .content-box {
+            border: 1px solid #e5e5e5;
+            padding: 20px;
+            line-height: 2;
+        }
+        .content-box h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* 页脚 */
+        .footer {
+            clear: both;
+            margin-top: 40px;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部LOGO区 -->
+    <div class="top-header">
+        <div class="wrap">
+            <h1>HTL NEWS 海托洛市新闻网</h1>
+            <div class="desc">海托洛市政厅 联合 异象管理局ETD 主办 · 全市权威新闻发布平台</div>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="main-nav">
+        <div class="wrap">
+            <ul>
+                <li><a href="javascript:;" class="nav-link active" data-id="index">首页</a></li>
+                <li><a href="javascript:;" class="nav-link" data-id="notice">市政公告</a></li>
+                <li><a href="javascript:;" class="nav-link" data-id="warning">异象预警</a></li>
+                <li><a href="javascript:;" class="nav-link" data-id="area">分区资讯</a></li>
+                <li><a href="javascript:;" class="nav-link" data-id="story">都市见闻</a></li>
+                <li><a href="javascript:;" class="nav-link" data-id="service">市民服务</a></li>
+                <li><a href="javascript:;" class="nav-link" data-id="contact">联系我们</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 主体内容 -->
+    <div class="wrap container">
+        <!-- 主内容区 -->
+        <div class="main">
+            <!-- 首页 -->
+            <div class="page active" id="index">
+                <!-- 头条要闻 -->
+                <div class="head-news">
+                    <h2>【紧急预警】绘空町出现持续性霓虹倒影异象 夜间请勿靠近高层建筑</h2>
+                    <div class="info">发布时间：2026-05-23 09:15  来源：异象管理局公共安全部</div>
+                </div>
+
+                <!-- 今日要闻 -->
+                <div class="news-module">
+                    <div class="module-title">今日要闻</div>
+                    <ul class="news-list">
+                        <li><a href="#">桥间地商业片区扩建工程竣工 新轨道交通线路明日正式试运行 <span class="time">2小时前</span></a></li>
+                        <li><a href="#">米格尔区水菱湖出现异常雾霭 相关区域实施临时管控 <span class="time">5小时前</span></a></li>
+                        <li><a href="#">未闻浦老街改造进入收尾阶段 复古街区风貌完整保留 <span class="time">12小时前</span></a></li>
+                        <li><a href="#">全市公共照明系统升级施工 分片区夜间作业请留意通行 <span class="time">16小时前</span></a></li>
+                        <li><a href="#">异象管理局开展安全宣讲 今日下午于桥间地市民广场举办 <span class="time">昨日</span></a></li>
+                    </ul>
+                </div>
+
+                <!-- 综合资讯 -->
+                <div class="news-module">
+                    <div class="module-title">综合资讯</div>
+                    <ul class="news-list">
+                        <li><a href="#">新赫兰德区社区福利活动开启 辖区居民可前往登记参与 <span class="time">3小时前</span></a></li>
+                        <li><a href="#">绘空町增设夜间巡逻力量 强化辖区安全防控 <span class="time">7小时前</span></a></li>
+                        <li><a href="#">全市消防演练即将开展 部分区域警报响起请勿恐慌 <span class="time">10小时前</span></a></li>
+                        <li><a href="#">跨区域物资运输通道优化 通行效率显著提升 <span class="time">昨日</span></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 市政公告 -->
+            <div class="page" id="notice">
+                <div class="content-box">
+                    <h2>市政官方公告</h2>
+                    <p>1. 城市照明升级工程将于5月24日启动，采取分区夜间施工模式，施工路段夜间光线较弱，请市民减速慢行、注意安全。</p>
+                    <p>2. 新轨道交通线路试运行期间，各站点将安排工作人员疏导客流，请广大市民有序乘车，勿在站台长时间逗留。</p>
+                    <p>3. 市容环境整治行动持续推进，针对占道经营、乱堆杂物等违规行为，将依照城市管理条例进行处置。</p>
+                    <p>4. 本周六上午9时至11时开展全域消防应急演练，演练期间防空警报将分段鸣放，属正常演练流程，请市民保持镇定。</p>
+                    <p>5. 城区公共健身设施已全部更新完毕，所有街头、园区健身场地恢复正常使用。</p>
+                </div>
+            </div>
+
+            <!-- 异象预警 -->
+            <div class="page" id="warning">
+                <div class="content-box">
+                    <h2>全域异象预警通报</h2>
+                    <p>【绘空町全域预警】每日22:00至次日05:00为异象高发时段，严禁靠近楼宇边缘、攀爬外墙、高空逗留，避免接触异常光影。</p>
+                    <p>【米格尔区水菱湖预警】湖面雾霭具备轻微精神干扰特性，警戒区内禁止垂钓、戏水、露营等一切活动。</p>
+                    <p>【未闻浦区域提示】晨间浓雾伴随低强度异象波动，能见度不足，建议出行结伴，尽量避开偏僻巷弄。</p>
+                    <p>应急渠道：如发现未知异象、异常现象、可疑影像，请立即拨打24小时应急热线 HTL-999。</p>
+                </div>
+            </div>
+
+            <!-- 分区资讯 -->
+            <div class="page" id="area">
+                <div class="content-box">
+                    <h2>五大辖区动态</h2>
+                    <p>桥间地：城市核心商圈运营平稳，配套设施全面投用，客流秩序良好。</p>
+                    <p>绘空町：城市景观设备运行正常，全域异象监测系统24小时值守。</p>
+                    <p>米格尔区：道路交通畅通，水菱湖周边警戒标识、防护设施全部布设到位。</p>
+                    <p>未闻浦：老街改造项目按期推进，特色文旅街区即将对外开放。</p>
+                    <p>新赫兰德区：工业生产、居民生活秩序稳定，未监测到异常波动。</p>
+                </div>
+            </div>
+
+            <!-- 都市见闻 -->
+            <div class="page" id="story">
+                <div class="content-box">
+                    <h2>都市见闻与民间传闻</h2>
+                    <p>海托洛市霓虹繁华，城市角落时常出现难以解释的奇异现象。近期多名市民反馈，在绘空町高层建筑的玻璃倒影中，多次观测到额外人影，相关线索已录入异象档案，专业调查组已进驻核查。</p>
+                    <p>另有群众反映，深夜未闻浦老街雾气中会出现模糊脚步声与虚影，目前暂未发现具有攻击性的异象。</p>
+                    <p>本站仅做信息记录，提醒广大市民切勿因猎奇前往危险区域探访，人身安全优先。</p>
+                </div>
+            </div>
+
+            <!-- 市民服务 -->
+            <div class="page" id="service">
+                <div class="content-box">
+                    <h2>市民服务指南</h2>
+                    <p>1. 意见反馈、投诉建议、设施报修通道全天候开放。</p>
+                    <p>2. 困难帮扶、民生救助业务，可前往各辖区政务窗口现场办理。</p>
+                    <p>3. 政务大厅服务时间：每日 08:00 - 18:00，节假日正常值班。</p>
+                    <p>4. 异象应急求助热线：HTL-999（24小时值守）</p>
+                </div>
+            </div>
+
+            <!-- 联系我们 -->
+            <div class="page" id="contact">
+                <div class="content-box">
+                    <h2>官方联系方式</h2>
+                    <p>新闻投稿邮箱：news@htl-gov.htl</p>
+                    <p>办公地址：海托洛市 桥间地 政务大厦七层 新闻中心</p>
+                    <p>异象管理局总机：HTL-001</p>
+                    <p>接待时间：每日 08:30 - 17:30，来访请配合身份登记。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 侧边栏 新闻站标配 -->
+        <div class="sidebar">
+            <div class="side-module">
+                <div class="module-title">区域状态速览</div>
+                <ul class="side-list">
+                    <li>桥间地 — 状态正常 | 异象等级：低</li>
+                    <li>绘空町 — 异象活跃 | 异象等级：中高</li>
+                    <li>米格尔区 — 局部异常 | 异象等级：中</li>
+                    <li>未闻浦 — 小幅波动 | 异象等级：中</li>
+                    <li>新赫兰德区 — 状态平稳 | 异象等级：低</li>
+                </ul>
+            </div>
+
+            <div class="side-module">
+                <div class="module-title">热门排行</div>
+                <ul class="side-list">
+                    <li>1 绘空町异象预警通知</li>
+                    <li>2 新地铁线路试运行公告</li>
+                    <li>3 水菱湖区域管控说明</li>
+                    <li>4 全市照明升级施工通知</li>
+                    <li>5 市民安全宣讲活动预告</li>
+                </ul>
+            </div>
+
+            <div class="side-module">
+                <div class="module-title">温馨提示</div>
+                <ul class="side-list">
+                    <li>遵守管控规定，远离危险区域</li>
+                    <li>发现异常现象及时上报</li>
+                    <li>夜间出行尽量结伴而行</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <div class="wrap">
+            <p>© 2026 海托洛市新闻网 版权所有 | 海托洛市政厅 & 异象管理局ETD 联合主办</p>
+            <p>本站为虚构娱乐站点，内容均为创作，与现实无关</p>
+        </div>
+    </div>
+
+    <!-- 切换脚本 -->
+    <script>
+        const links = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                // 清除选中
+                links.forEach(l => l.classList.remove('active'));
+                pages.forEach(p => p.classList.remove('active'));
+                // 激活当前
+                link.classList.add('active');
+                const id = link.dataset.id;
+                document.getElementById(id).classList.add('active');
+            })
+        })
+    </script>
+</body>
+</html>
